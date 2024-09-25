@@ -1,0 +1,77 @@
+<div class="bg-light">
+    <section class="container py-3">
+    <button class="btn main-btn ms-auto d-block mb-2" routerLink="/home"> Create order </button>
+
+        <div *ngFor="let order of userOrder | paginate: { itemsPerPage: 2, currentPage: pageNumber }"
+            class="mb-3 px-4 py-3 rounded-3 bg-white">
+            <div class="orderInfo py-2 border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="fw-bold h4">Order ID {{order.id}}</h3>
+                    <h3 class="fw-bold h4">{{order.totalOrderPrice|
+                        currency:"EGP"}}</h3>
+                </div>
+                <div class="order time">
+                    <p><span class="px-1 text-muted">Order date:</span>
+                        <span
+                            class="px-1">{{order.createdAt|date:'MMM d,h:mm a'}}</span>
+                        | <span class="text-main px-1"> <i
+                                class="fa-solid fa-plane-up"></i> Eistamted data
+                            : during 15 days</span>
+                    </p>
+
+                </div>
+            </div>
+
+            <div *ngFor="let cartItem of order.cartItems " class="row p-3"
+                role="button">
+                <div
+                    class="col-md-1 bg-light rounded-3 d-flex justify-content-center align-items-center" [routerLink]="['/details',cartItem.product._id]">
+                    
+                    <img class="w-100 bg-light"
+                        [src]="cartItem.product.imageCover"
+                        [alt]="cartItem.product.title" loading="lazy">
+                </div>
+                <div class="col-md-10">
+                    <div
+                        class=" d-flex justify-content-between align-items-center">
+                        <div class="info">
+                            <h2 class="h5">{{cartItem.product.title}}</h2>
+                            <h4
+                                class="h6 text-muted">{{cartItem.product.brand.name}}
+                                | {{cartItem.product.category.name}}</h4>
+                        </div>
+                        <div class="detials">
+                            <span class="text-main">{{cartItem.price | currency: "EGP"}}</span>
+                            <p><span class="px-2">count:</span> <span class="rating-color">{{cartItem.count}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="d-flex justify-content-between  border-top py-2">
+                <div class="payment">
+                    <h6 class="fw-bold">Payment:</h6>
+                    <div class="d-flex align-items-center">
+                    <span class="text-muted lead">{{order.paymentMethodType | uppercase}}</span>
+                    <i *ngIf="order.paymentMethodType === 'card'" class="fa-brands fa-cc-visa fa-3x px-1 text-main"></i>
+                </div></div>
+                <div class="delivery">
+                    <h6 class="fw-bold">Delivery:</h6>
+                    <h6 class="text-secondary">Address:
+                        {{order?.shippingAddress?.details }},<br>
+                        {{order?.shippingAddress?.city}},<br>
+                        {{order?.shippingAddress?.phone}}
+                    </h6>
+
+                    
+                </div>
+
+            </div>
+
+        </div>
+        <pagination-controls class=" text-center" (pageChange)="pageNumber = $event">
+
+        </pagination-controls>
+    </section>
+</div>

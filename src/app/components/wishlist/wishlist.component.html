@@ -1,0 +1,32 @@
+
+<section class="container py-3 w-75" *ngIf="wishInfo.length;else image">
+    <h2 class="fw-bold">WishList</h2>
+
+    <div *ngFor="let item of wishInfo"
+        class="row py-3 mb-2 px-1 align-items-center border-2 rounded-3 shadow-sm  bg-light">
+        <div role="button" class="col-md-2" >
+            <img class="w-100" [src]="item?.imageCover" [alt]="item?.title">
+        </div>
+        <div
+            class="col-md-10 d-flex justify-content-between align-items-center">
+            <div class="detailCart">
+                <h2 class="h5"> {{item?.title}}</h2>
+                <h5 class="text-muted">Price: <span class="rating-color">
+                        {{item?.price}}</span> EGP </h5>
+                <button #btnRemove (click)="deleteItem(item?._id,btnRemove)"
+                    class="btn main-btn"><i class="fa-regular fa-trash-can"></i>
+                    Remove</button>
+            </div>
+            <button class="btn main-btn"
+                [routerLink]="['/details',item._id]">Details</button>
+
+        </div>
+    </div>
+</section>
+
+<ng-template #image>
+    <div class="w-50 mx-auto py-5">
+<img class="w-100" src="./assets/images/emty-wishlist.png" alt="imageEmtyCart">
+    </div>
+</ng-template>
+

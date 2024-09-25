@@ -1,0 +1,12 @@
+<app-navbar-blank></app-navbar-blank>
+<main>
+    <ngx-spinner
+bdColor="rgba(0, 0, 0, .9)"
+  type="ball-scale-multiple"
+></ngx-spinner>
+    <router-outlet></router-outlet>
+
+</main>
+<button #Up class="main-btn btn Up fw-bold" (click)="scrollTop()">Up</button>
+<!-- home,cart,brands,products,categories -->
+<app-footer></app-footer>

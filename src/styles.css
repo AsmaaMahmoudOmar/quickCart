@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400&display=swap");
+.nav-link {
+  transition: unset !important;
+}
+
+.active-link {
+  background-color: #0aad0a;
+  color: #fff !important;
+  border-radius: 5px;
+}
+
+body {
+  font-family: "Encode Sans Expanded", sans-serif;
+}
+
+.rating-color {
+  color: #ffc908;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-sm {
+  font-size: 12px;
+}
+
+.text-main {
+  color: #0aad0a;
+}
+
+.text-main-light {
+  color: #f0f3f2;
+}
+
+.bg-main {
+  background-color: #0aad0a !important;
+}
+
+.bg-main-light {
+  background-color: #f0f3f2 !important;
+}
+
+.main-btn {
+  border: unset;
+  cursor: pointer;
+  color: #fff !important;
+  background-color: #0aad0a !important;
+  padding: 4px 8px;
+  transition: background-color 0.8s;
+  border-radius: 5px;
+}
+.main-btn:hover {
+  background-color: #08e208 !important;
+}
+.main-btn:disabled {
+  background-color: rgba(6, 122, 6, 0.3882352941) !important;
+  color: rgba(255, 255, 255, 0.5568627451) !important;
+  cursor: not-allowed;
+}
+
+input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.39) !important;
+  border-color: #0aad0a !important;
+}
+
+.form-item {
+  padding: 10px;
+}
+
+.product {
+  padding: 6px 9px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.product:hover {
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px, rgba(145, 158, 171, 0.14) 0px 4px 5px 0px, rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  border: solid 2px #0aad0a;
+}
+.product:hover .add-btn {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.product .add-btn {
+  transition: transform 1s, opacity 1s, background-color 1s;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.ngx-pagination .current {
+  background: #0aad0a !important;
+  border-radius: 5px !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  background: #dafada !important;
+  border-radius: 5px !important;
+  color: #0aad0a !important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  color: #18aa1c !important;
+}
+
+.toast-success {
+  position: fixed !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+
+.maxWidth {
+  max-width: 750px;
+}
+
+img {
+  mix-blend-mode: multiply !important;
+}
+
+.heart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+}
+
+.category {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+.category:hover {
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px, rgba(145, 158, 171, 0.14) 0px 4px 5px 0px, rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+}
+.category:hover .name {
+  top: 0;
+  transform: translateY(0%);
+}
+
+.category img {
+  height: 300px;
+}
+
+.name {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(69, 71, 69, 0.4862745098);
+  transition: transform 1s, top 1s, background-color 1s;
+}
+
+.fixHigh {
+  height: 300px;
+}/*# sourceMappingURL=styles.css.map */

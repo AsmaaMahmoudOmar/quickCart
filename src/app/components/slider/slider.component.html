@@ -1,0 +1,53 @@
+<section class="main-slider pt-5 pb-2 container">
+    <div class="row g-0">
+        <div class="col-md-9">
+            <owl-carousel-o [options]="mainSlide">
+
+                <ng-container>
+                    <ng-template carouselSlide>
+                        <img height="400" class="w-100" role="button"
+                            src="./assets/images/main-slider-1.jpeg"
+                            loading="lazy">
+
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <img height="400" class="w-100" role="button"
+                            src="./assets/images/main-slider-2.jpeg"
+                            loading="lazy">
+
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <img height="400" class="w-100" role="button"
+                            src="./assets/images/main-slider-3.jpeg"
+                            loading="lazy">
+
+                    </ng-template>
+                </ng-container>
+
+            </owl-carousel-o>
+        </div>
+        <div class="col-md-3">
+            <img height="200" class="w-100" role="button"
+                src="./assets/images/slide-1.jpeg"
+                loading="lazy">
+            <img height="200" class="w-100" role="button"
+                src="./assets/images/slide-2.jpeg"
+                loading="lazy">
+        </div>
+    </div>
+
+</section>
+<section class="slider container">
+    <owl-carousel-o [options]="customOptions" class="rounded shadow-sm">
+
+        <ng-container *ngFor="let item of cateData">
+            <ng-template carouselSlide>
+                <img height="250" class="w-100" role="button" [src]="item.image"
+                    [alt]="item.name">
+
+                <h2 class="h4 font-sm text-main">{{item.name}}</h2>
+            </ng-template>
+        </ng-container>
+
+    </owl-carousel-o>
+</section>

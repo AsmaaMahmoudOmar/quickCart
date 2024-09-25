@@ -1,0 +1,53 @@
+
+<section class="container py-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="fw-bold"> All orders</h2>
+        <button class="btn main-btn" routerLink="/home"> Create order </button>
+    </div>
+    <div
+    class="table-responsive"
+   >
+    <table
+        class="table table-striped table-borderless align-middle"
+    >
+        <thead class="table-light">
+            <caption>
+                Orders
+            </caption>
+            <tr class="bg-main text-center">
+                <th>Order</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Payment Methods</th>
+                <th>Payment Status</th>
+
+                <th>Delivery Methods</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider" *ngIf="Allorders">
+            <tr *ngFor="let order of Allorders| paginate: { itemsPerPage: itemsPerPage, currentPage: pageNumber }; let i =index"
+             class="text-center"
+            >
+                <td scope="row">
+                    {{ itemsPerPage * (pageNumber - 1) + i+1 }}
+                </td>
+                <td [routerLink]="['/userorder',order?.user?._id]" class="text-primary" role="button">{{order?.user?.name}}</td>
+                <td>{{order?.createdAt |date:'MMM d,h:mm a'}}</td>
+
+                <td class="text-danger">{{order?.totalOrderPrice | currency:'EGP'}}</td>
+
+                <td class="text-success">{{order?.paymentMethodType}}</td>
+                <td class="text-danger" >{{order.isPaid? "Yes":"No"}}</td>
+                <td>{{order?.isDelivered? "Yes":"No"}}</td>
+            </tr>
+           
+        </tbody>
+        
+    </table>
+    <pagination-controls class=" text-center" (pageChange)="pageNumber = $event">
+
+    </pagination-controls>
+   </div>
+
+</section>

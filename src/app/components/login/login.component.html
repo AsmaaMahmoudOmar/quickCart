@@ -1,0 +1,38 @@
+<div class="container maxWidth py-3">
+    <form [formGroup]="loginForm" (ngSubmit)="handelLogin()">
+        <div class="form-item">
+            <label for="email">Email</label>
+            <input class="form-control" formControlName="email" type="email" name="email" id="email">
+            <div
+                *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors"
+                class="alert alert-danger my-2">
+                <p *ngIf="loginForm.get('email')?.getError('required')">Email Is
+                    Required</p>
+                <p *ngIf="loginForm.get('email')?.getError('email')">Enter
+                    Vaild Email</p>
+            </div>
+        </div>
+        <div class="form-item">
+            <label for="password">Password</label>
+            <input class="form-control" formControlName="password" type="password" name="password"
+                id="password">
+            <div
+                *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors"
+                class="alert alert-danger">
+                <p
+                    *ngIf="loginForm.get('password')?.getError('required')">Password
+                    Is Required</p>
+                <p *ngIf="loginForm.get('password')?.getError('pattern')">At
+                    least 6 char</p>
+            </div>
+        </div>
+        <div *ngIf="errMesg" class="alert alert-danger">
+            <p>{{errMesg}}</p>
+        </div>
+
+        <a routerLink="/forget"> Forget Password</a>
+        <button *ngIf="load" type="submit" class="main-btn d-block ms-auto" ><i class="fa-solid fa-spinner fa-spin"></i></button>
+
+        <button *ngIf="load==false" [disabled]="loginForm.invalid" type="submit" class="btn main-btn d-block ms-auto" > Login</button>
+    </form>
+</div>

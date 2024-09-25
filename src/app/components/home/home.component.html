@@ -1,0 +1,49 @@
+
+<app-slider></app-slider>
+
+<section class="container py-3" id="home">
+
+    <!-- c+enter -->
+    <div class="py-5 w-50 mx-auto">
+        <input
+            [(ngModel)]="termInput"
+            type="text" placeholder="Search"
+            class="form-control border border-2 border-success">
+
+    </div>
+
+    <div class="row g-4 mx-1">
+        <div role="button"
+            *ngFor="let prod of prodsData |search: termInput let i =index"
+            class="product col-sm-6 col-md-4 col-xl-2">
+
+            <div class="position-relative">
+                <span role="button" class="heart"
+                    (click)="addProductToWishList(prod._id,bg)">
+                    <i #bg class="fa-regular fa-heart fa-2x text-danger"></i>
+
+                </span>
+                <div class="item mb-2" [routerLink]="['/details',prod._id]">
+                    <img class="w-100 mb-3" [src]="prod.imageCover"
+                        [alt]="prod.title">
+                    <h3 class="h6 text-main mx-w">{{prod.title| sliceText}}</h3>
+                    <p
+                        class="font-sm mx-w fw-bold text-muted">{{prod.description.split(' ').slice(0,1).join(" ")}}</p>
+                    <div
+                        class="icon d-flex justify-content-between align-items-center">
+                        <span>{{prod.price | currency:'EGP'}}</span>
+                        <span><i class="fa-solid fa-star rating-color"></i>
+                            {{prod.ratingsAverage}}</span>
+
+                    </div>
+                </div>
+            </div>
+            <button (click)="addProductToCart(prod._id)"
+                class="btn add-btn main-btn d-flex align-items-center w-100 justify-content-center">
+                <span>AddToCart </span> <i class="fa-solid fa-plus ps-2"></i>
+            </button>
+
+        </div>
+    </div>
+
+</section>
